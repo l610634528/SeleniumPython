@@ -2,10 +2,10 @@ smtp_server: smtp.qq.com
 
 port: 465
 
-sender: 1148479571@qq.com
+sender: 610634528@qq.com
 
 psw: xxxxxxxx
 
 subject: 外勤365web端自动化测试报告
 
-receiver: 1148479571@qq.com,yangweimin@waiqin365.com
+receiver: l610634528@163.com

@@ -1,7 +1,3 @@
-# -*- coding:utf-8 -*-
-# @Time   : 2019-01-15 16:21
-# @Author : YangWeiMin
-
 import time
 from common.logger import Log
 from selenium.webdriver.support.ui import WebDriverWait
@@ -17,11 +13,8 @@ class BasePage(unittest.TestCase):
     logger = Log(logger='BasePage').get_log()
     parameter = GetEnvironmentParameter().environment_parameter('test')
 
-
-
     def setUp(self):
         self.logger.info('------开始执行测试用例------')
-
 
     @classmethod
     def setUpClass(cls):
@@ -36,32 +29,31 @@ class BasePage(unittest.TestCase):
         cls.driver.get(cls.parameter['url'])
         cls.driver.maximize_window()
 
-
     def find_element(self, loc):
         """重写查找元素的方法"""
         try:
-            WebDriverWait(self.driver, 15).until(lambda driver:driver.find_element(*loc).is_displayed())
+            WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
             return self.driver.find_element(*loc)
         except:
             self.logger.error('%s 页面中未能找到%s 元素' % (self, loc))
-
 
     def clear_key(self, loc):
         """重写清空文本框"""
         time.sleep(3)
         self.find_element(loc).clear()
 
-
     def send_keys(self, loc, value):
         """输入内容"""
         self.clear_key(loc)
         self.find_element(loc).send_keys(value)
 
-
     def click_button(self, loc):
         """点击按钮"""
         self.find_element(loc).click()
 
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
 
 if __name__ == '__main__':

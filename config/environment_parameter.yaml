@@ -1,9 +1,9 @@
 # 测试环境
 test:
-  url: http://172.31.3.233:6020
+  url: http://172.16.36.212/cas/login
   tenantname: yang
-  username: yang
-  password: a222222
+  username: root
+  password: 123456
 
 
 # 生产环境
