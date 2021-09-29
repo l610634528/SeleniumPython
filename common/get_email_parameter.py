@@ -1,6 +1,7 @@
 import os
 import yaml
 
+
 class GetEmailParameter(object):
 
     def __init__(self):
@@ -9,9 +10,12 @@ class GetEmailParameter(object):
         if not os.path.exists(self.email_path):
             os.mkdir(self.email_path)
 
-
     def email_parameter(self):
         """获取email的配置信息"""
         with open(self.email_path, 'r', encoding='utf-8') as f:
             parameter = yaml.load(f)
         return parameter
+
+
+if __name__ == '__main__':
+    pass

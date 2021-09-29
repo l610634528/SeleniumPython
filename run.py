@@ -25,29 +25,31 @@ log = Log('run').get_log()
 
 
 def add_case(caseName='case', rule='test*.py'):
-    '''
+    """
     作用：加载所有测试用例
     :param caseName:
     :param rule:
     :return:
-    '''
+    """
     case_path = os.path.join(os.getcwd(), caseName)
-    if not os.path.exists(case_path): os.mkdir(case_path)
+    if not os.path.exists(case_path):
+        os.mkdir(case_path)
     # 定义discover方法的参数
     discover = unittest.defaultTestLoader.discover(case_path, pattern=rule, top_level_dir=None)
     return discover
 
 
 def run_case(all_case, reportName='reports'):
-    '''
+    """
     作用：执行所有的用例，并把执行结果写入HTML测试报告中
     :param all_case:
     :param reportName:
     :return:
-    '''
+    """
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     report_path = os.path.join(cur_path, reportName)
-    if not os.path.exists(report_path): os.mkdir(report_path)
+    if not os.path.exists(report_path):
+        os.mkdir(report_path)
     report_abspath = os.path.join(report_path, now + 'result.html')
     with open(report_abspath, 'wb') as fp:
         runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='外勤365web自动化测试报告', description='用例执行情况')
@@ -55,11 +57,11 @@ def run_case(all_case, reportName='reports'):
 
 
 def get_report_file(report_path):
-    '''
+    """
     作用: 获取最新的测试报告
     :param report_path:
     :return:
-    '''
+    """
     lists = os.listdir(report_path)
     lists.sort(key=lambda fn: os.path.getmtime(os.path.join(report_path, fn)))
     print('最新测试报告：' + lists[-1])

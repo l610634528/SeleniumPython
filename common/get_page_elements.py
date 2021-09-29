@@ -19,3 +19,5 @@ class GetPageElements(object):
         return elements
 
 
+if __name__ == '__main__':
+    pass
